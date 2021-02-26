@@ -106,16 +106,32 @@ void in6_pcbdetach(strcut inpcb *inp)
 
     }
 
-
     //...省略若干代码
+    //只释放了in6p_outputopts，没有清理in6p_outputopts指针的地址，造成悬垂指针
 }
+<br/>
+<br/>
+
+### #悬垂指针
+如上代码只释放了in6p_outputopts，没有清理in6p_outputopts指针的地址，造成`悬垂指针`
+幸运的是我们可以用过 socket disconnect 后继续通过`setsockopt`和`getsockopt`间接读写这个悬垂指针。  
+等待系统重新分配这块内存，我们就可以对其进行访问，因此转换成了如何间接控制系统对该区域的Reallocation。
 
 ```
 <br/>
 <br/>
 
 
-### #Use After Free
+### #Use After Free（悬垂指针操作已释放区域）
 即尝试访问已释放的内存，这会导致程序崩溃，或是潜在的任意代码执行，甚至获取完全的远程控制能力。  
 **UAF的关键之一是获取被释放区域的内存地址，一般透过悬垂指针实现，而悬垂指针是由于指针指向的内存区域被释放，但指针未被清零导致的。**  
+<br/>
+<br/>
 
+### 堆喷射（Heap Sparaying）
+<br/>
+<br/>
+
+### 堆风水（Heap feng-shui）
+<br/>
+<br/>
