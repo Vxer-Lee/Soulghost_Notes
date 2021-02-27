@@ -5,13 +5,35 @@
 ![avatar](.asserts/1.png)  
  </br> 
  </br> 
-  
-两个大神的ARM汇编教程  
-(知兵)[https://zhuanlan.zhihu.com/p/31168191]  
-(刘坤的技术博客)[https://blog.cnbluebox.com/blog/2017/07/24/arm64-start/]  
 
+## 【笔记目录】
+
+## [iOS汇编入门教程（一） ARM64汇编基础](#anchoraa)  
+## [iOS汇编入门教程（二） 在Xcode工程嵌入汇编](#anchoraaa)  
+## [iOS汇编入门教程（三） 汇编中的Section与数据存取](#anchoraaaa)  
+## [iOS汇编入门教程（四） 基于LLDB动态调试快速分析系统函数的实现](#anchoraaaaa)  
+## [iOS汇编入门教程（五） Objc Block的内存布局和汇编表示](#anchoraaaaaa)  
+## [iOS汇编入门教程（六） CPU指令重排与内存屏障碍](#anchoraaaaaaa)  
+## [iOS汇编入门教程（七） Arm Exclusive - 互斥锁与读写一致性的底层实现原理](#anchoraaaaaaaa)  
+## [iOS汇编入门教程（八） 静态链接中打的Reloation](#anchoraaaaaaaaa)  
+<br/>  
+<br/>
+
+--------------------------------------------------------------------------------------------------
+> 两个大神的ARM汇编教程：  
+> [知兵的技术博客](https://zhuanlan.zhihu.com/p/31168191)  
+> [刘坤的技术博客](https://blog.cnbluebox.com/blog/2017/07/24/arm64-start/)  
+>
+--------------------------------------------------------------------------------------------------  
+<br/>
+<br/>
+
+<span id = "anchoraa"> </span>
+<span id = "iOS"> </span>
 
 ## [iOS汇编入门教程（一） ARM64汇编基础](https://mp.weixin.qq.com/s/tbOfzoiUIoRueSRIboI2zw)
+<br/>
+
 以反调试为例，我们知道，通过调用ptrace函数可以阻止调试器依附。  
 ```objc
 ptrace(31,0,0,0)
@@ -76,3 +98,47 @@ ldr w1,[sp,#8]  ;把sp+8的值取出来保存到w1中
 ;相加两个寄存器保存到w0中
 add w0,w0,w1
 ```
+<br/>
+<br/>
+
+<span id = "anchoraaa"> </span>
+
+## [iOS汇编入门教程（二） 在Xcode工程嵌入汇编](https://mp.weixin.qq.com/s/tbOfzoiUIoRueSRIboI2zw)  
+<br/>
+<br/>
+
+<span id = "anchoraaaa"> </span>
+
+## [iOS汇编入门教程（三） 汇编中的Section与数据存取](https://mp.weixin.qq.com/s/tbOfzoiUIoRueSRIboI2zw)  
+<br/>
+<br/>
+
+<span id = "anchoraaaaa"> </span>
+
+## [iOS汇编入门教程（四） 基于LLDB动态调试快速分析系统函数的实现](https://mp.weixin.qq.com/s/tbOfzoiUIoRueSRIboI2zw)  
+<br/>
+<br/>
+
+<span id = "anchoraaaaaa"> </span>
+
+## [iOS汇编入门教程（五） Objc Block的内存布局和汇编表示](https://mp.weixin.qq.com/s/tbOfzoiUIoRueSRIboI2zw)  
+<br/>
+<br/>
+
+<span id = "anchoraaaaaaa"> </span>
+
+## [iOS汇编入门教程（六） CPU指令重排与内存屏障碍](https://mp.weixin.qq.com/s/tbOfzoiUIoRueSRIboI2zw)  
+<br/>
+<br/>
+
+<span id = "anchoraaaaaaaa"> </span>
+
+## [iOS汇编入门教程（七） Arm Exclusive - 互斥锁与读写一致性的底层实现原理](https://mp.weixin.qq.com/s/tbOfzoiUIoRueSRIboI2zw)  
+<br/>
+<br/>
+
+<span id = "anchoraaaaaaaaa"> </span>
+
+## [iOS汇编入门教程（八） 静态链接中打的Reloation](https://mp.weixin.qq.com/s/tbOfzoiUIoRueSRIboI2zw)  
+<br/>
+<br/>
