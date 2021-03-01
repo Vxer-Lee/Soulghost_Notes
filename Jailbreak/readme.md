@@ -109,6 +109,8 @@ void in6_pcbdetach(strcut inpcb *inp)
     //...省略若干代码
     //只释放了in6p_outputopts，没有清理in6p_outputopts指针的地址，造成悬垂指针
 }
+```
+
 <br/>
 <br/>
 
@@ -116,8 +118,6 @@ void in6_pcbdetach(strcut inpcb *inp)
 如上代码只释放了in6p_outputopts，没有清理in6p_outputopts指针的地址，造成`悬垂指针`
 幸运的是我们可以用过 socket disconnect 后继续通过`setsockopt`和`getsockopt`间接读写这个悬垂指针。  
 等待系统重新分配这块内存，我们就可以对其进行访问，因此转换成了如何间接控制系统对该区域的Reallocation。
-
-```
 <br/>
 <br/>
 
@@ -129,9 +129,18 @@ void in6_pcbdetach(strcut inpcb *inp)
 <br/>
 
 ### 堆喷射（Heap Sparaying）
+简言之就是，比如我们 alloc 了 1 个 8B 的区域，随后将其释放，接下来再执行 alloc 时迟早会对先前的区域进行复用，如果恰好被我们 alloc 时占用，则达到了内容控制的目的。透过这种技术我们可以间接控制堆上的 Reallocation 内容。
 <br/>
 <br/>
 
 ### 堆风水（Heap feng-shui）
+所谓堆风水也叫作堆排布，其实说严格了并不是一种漏洞的利用方法，而是一种灵活布置堆块来控制堆布局的方法，  
+在一些一些其他漏洞的利用中起到效果。通过一道经典的题目，由清华蓝莲花战队出的babyfengshui来看一下  
+
+[参考链接：堆风水](https://blog.csdn.net/Breeze_CAT/article/details/103788631)
+
 <br/>
 <br/>
+  
+### POC验证代码:  
+(poc.cpp)[/Jailbreak/poc.cpp]
