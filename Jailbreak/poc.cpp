@@ -75,7 +75,7 @@ void poc()
             printf("\n");
             Payload = fakeOptions;
             paylaod_task = task;
-
+            break;
         }
     }
 
